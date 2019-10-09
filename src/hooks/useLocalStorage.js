@@ -7,5 +7,10 @@ export function useLocalStorage (key, initialValue) {
         return item ? JSON.parse(item) : initialValue;
     })
 
-    return [sortedValue]
+    const setValue = (value) => {
+        setSortedValue(value)
+        window.localStorage.setItem(key, JSON.stringify(value))
+    }
+
+    return [sortedValue, setValue]
 }
